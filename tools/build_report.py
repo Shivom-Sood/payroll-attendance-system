@@ -53,9 +53,9 @@ def money(v):
 
 # ---------------------------------------------------------------- styles
 ss = getSampleStyleSheet()
-NAVY = colors.HexColor("#1f3864")
-ACC = colors.HexColor("#2e5c9a")
-LIGHT = colors.HexColor("#eef3fb")
+NAVY = colors.HexColor("#b4541a")   # headings: burnt orange
+ACC = colors.HexColor("#e07b39")    # table headers / accents
+LIGHT = colors.HexColor("#fdf1e7")  # zebra rows
 body = ParagraphStyle("body", parent=ss["Normal"], fontName="Helvetica", fontSize=10, leading=14.2,
                       spaceAfter=6, alignment=4)
 small = ParagraphStyle("small", parent=body, fontSize=8, leading=10, spaceAfter=0, alignment=0)
@@ -84,7 +84,7 @@ def table(rows, widths, header=True, font=8.6, zebra=True, keep=False):
                        ParagraphStyle("c", parent=cellst, fontSize=font, leading=font + 2.4))
              for c in r] for i, r in enumerate(rows)]
     t = Table(data, colWidths=widths, repeatRows=1 if header else 0)
-    st = [("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#c5ccd6")),
+    st = [("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#efc9ab")),
           ("VALIGN", (0, 0), (-1, -1), "TOP"),
           ("LEFTPADDING", (0, 0), (-1, -1), 4), ("RIGHTPADDING", (0, 0), (-1, -1), 4),
           ("TOPPADDING", (0, 0), (-1, -1), 2.5), ("BOTTOMPADDING", (0, 0), (-1, -1), 2.5)]
@@ -141,32 +141,23 @@ times = [float(x) for x in re.findall(r"^\| -> (?:Group aggregate|Table scan on 
                                       idx, flags=re.M)]
 
 # ================================================================ COVER
-story += [Spacer(1, 2.2 * cm),
-          Paragraph("KR MANGALAM UNIVERSITY, GURUGRAM", ParagraphStyle("u", parent=body, alignment=TA_CENTER,
-                    fontName="Helvetica-Bold", fontSize=13, textColor=NAVY)),
-          Paragraph("School of Engineering &amp; Technology", ParagraphStyle("u2", parent=body, alignment=TA_CENTER)),
-          Spacer(1, 1.6 * cm),
+story += [Spacer(1, 4.5 * cm),
           Paragraph("DBMS CAPSTONE PROJECT REPORT", ParagraphStyle("t0", parent=body, alignment=TA_CENTER,
                     fontName="Helvetica-Bold", fontSize=12, textColor=ACC)),
           Spacer(1, 0.4 * cm),
           Paragraph("Overtime-Based Payroll and<br/>Attendance Management System",
                     ParagraphStyle("t", parent=body, alignment=TA_CENTER, fontName="Helvetica-Bold", fontSize=24,
                                    leading=30, textColor=NAVY)),
-          Spacer(1, 0.5 * cm),
-          Paragraph("A full-lifecycle MySQL application for a mid-sized IT firm: data modelling, procedural SQL, "
-                    "reporting and optimisation, transactional security, and a role-based interface",
-                    ParagraphStyle("st", parent=body, alignment=TA_CENTER, fontSize=11, leading=15,
-                                   textColor=colors.HexColor("#444444"))),
-          Spacer(1, 2.2 * cm)]
+          Spacer(1, 3.2 * cm)]
 cover = Table([[Paragraph("<b>Submitted by</b>", cellst), Paragraph("Shivom Sood", cellst)],
                [Paragraph("<b>Roll number</b>", cellst), Paragraph("2501730435", cellst)],
                [Paragraph("<b>Programme</b>", cellst), Paragraph("B.Tech CSE (AI &amp; ML), Semester 3", cellst)],
                [Paragraph("<b>Course</b>", cellst), Paragraph("Database Management Systems", cellst)],
                [Paragraph("<b>Project type</b>", cellst), Paragraph("Individual (solo) capstone, topic #11", cellst)],
-               [Paragraph("<b>Source code</b>", cellst), Paragraph(f'<link href="{GITHUB}" color="blue">{GITHUB}</link>', cellst)],
+               [Paragraph("<b>Source code</b>", cellst), Paragraph(f'<link href="{GITHUB}" color="#b4541a">{GITHUB}</link>', cellst)],
                [Paragraph("<b>Date</b>", cellst), Paragraph(date.today().strftime("%B %Y"), cellst)]],
               colWidths=[4 * cm, 10 * cm])
-cover.setStyle(TableStyle([("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#c5ccd6")),
+cover.setStyle(TableStyle([("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#efc9ab")),
                            ("BACKGROUND", (0, 0), (0, -1), LIGHT), ("TOPPADDING", (0, 0), (-1, -1), 5),
                            ("BOTTOMPADDING", (0, 0), (-1, -1), 5)]))
 story += [cover, PageBreak()]
@@ -610,7 +601,7 @@ pip3 install mysql-connector-python
 ./setup.sh                      # Enter the MySQL root password (or press Enter if none)
 python3 app/payroll_app.py      # HR: neha / hr@1234     Employee: rahul / emp@1234
 python3 tests/run_tests.py      # runs all test cases and rewrites tests/test_results.md""")
-P(f'Source code: <link href="{GITHUB}" color="blue">{GITHUB}</link>')
+P(f'Source code: <link href="{GITHUB}" color="#b4541a">{GITHUB}</link>')
 
 
 # ---------------------------------------------------------------- page decorations
@@ -622,7 +613,7 @@ def decorate(canvas, doc):
     canvas.setFillColor(colors.HexColor("#777777"))
     canvas.drawString(2 * cm, 1.2 * cm, "Overtime-Based Payroll and Attendance Management System | Shivom Sood (2501730435)")
     canvas.drawRightString(A4[0] - 2 * cm, 1.2 * cm, f"Page {doc.page}")
-    canvas.setStrokeColor(colors.HexColor("#c5ccd6"))
+    canvas.setStrokeColor(colors.HexColor("#efc9ab"))
     canvas.line(2 * cm, 1.5 * cm, A4[0] - 2 * cm, 1.5 * cm)
     canvas.restoreState()
 
