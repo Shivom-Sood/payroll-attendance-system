@@ -1,0 +1,18 @@
+digraph A {
+  rankdir=LR; fontname="Helvetica"; node [fontname="Helvetica", fontsize=12, shape=box, style="rounded,filled", fillcolor="#eef3fb", color="#5b7db1"];
+  edge [fontname="Helvetica", fontsize=10, color="#555555"];
+  subgraph cluster_users { label="Users"; style=dashed; color="#999999";
+    hr [label="HR Admin\n(neha, aditya)", fillcolor="#fff4d6"]; emp [label="Employee\n(rahul, priya, ...)", fillcolor="#e6f6ea"]; }
+  app [label="Python CLI app\npayroll_app.py\n\n- login (salted SHA-256)\n- role-based menus\n- parameterised queries"];
+  subgraph cluster_db { label="MySQL - payroll_db"; color="#5b7db1"; style=rounded;
+    procs [label="Stored procedures & functions\n(business rules, COMMIT / ROLLBACK)"];
+    views [label="Views (reports)\nmonthly attendance, salary slip,\nlate marks, overtime, expenditure"];
+    trg [label="Triggers\nvalidation + audit trail", fillcolor="#fdecea"];
+    tables [label="13 tables\n(3NF schema, PK/FK/CHECK,\nindexes)", fillcolor="#dfe9f7"];
+    myviews [label="v_my_* views / sp_my_* procs\n(row-level security)", fillcolor="#e6f6ea"]; }
+  wb [label="MySQL Workbench /\nmysql client", fillcolor="#f2f2f2"];
+  hr -> app; emp -> app;
+  app -> procs [label="EXECUTE\n(payroll_app account)"]; app -> views [label="SELECT"];
+  procs -> tables; views -> tables; trg -> tables [dir=both, style=dashed]; myviews -> views;
+  wb -> myviews [label="role payroll_employee"]; wb -> procs [label="role payroll_hr"];
+}

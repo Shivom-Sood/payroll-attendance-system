@@ -1,0 +1,76 @@
+// Chen-notation ER diagram: Overtime-Based Payroll and Attendance Management System
+// Render:  dot -Kneato -Tpng docs/er_diagram_chen.dot -o docs/er_diagram_chen.png
+graph ER {
+    layout=neato; overlap=false; splines=true; sep="+14"; outputorder=edgesfirst;
+    fontname="Helvetica"; bgcolor="white";
+    label="Overtime-Based Payroll and Attendance Management System - ER Diagram (Chen notation)\nRectangle = entity  |  Diamond = relationship  |  Ellipse = attribute (underlined = key, dashed = derived)";
+    labelloc=t; fontsize=18;
+    node [fontname="Helvetica", fontsize=12];
+    edge [color="#555555"];
+
+    // ---------------- Entities ----------------
+    node [shape=box, style="filled,bold", fillcolor="#cfe2ff", penwidth=2];
+    DEPARTMENT; EMPLOYEE [fontsize=14]; SALARY_STRUCTURE; ATTENDANCE; LEAVE_REQUEST; LEAVE_TYPE; PAYROLL; APP_USER;
+
+    // ---------------- Relationships ----------------
+    node [shape=diamond, style=filled, fillcolor="#ffe8a3", penwidth=1.5, fontsize=11];
+    works_in [label="Works in"]; manages [label="Manages"]; has_salary [label="Has"];
+    records [label="Records"]; applies [label="Applies"]; of_type [label="Of type"];
+    reviews [label="Reviews"]; paid [label="Paid via"]; logs_in [label="Logs in as"];
+
+    // ---------------- Attributes ----------------
+    node [shape=ellipse, style=filled, fillcolor="#e9f7ef", penwidth=1, fontsize=10];
+    d_id [label=<<U>dept_id</U>>]; d_name [label="dept_name"]; d_loc [label="location"];
+    e_id [label=<<U>emp_id</U>>]; e_name [label="name\n(first, last)"]; e_email [label="email"];
+    e_hire [label="hire_date"]; e_desig [label="designation"]; e_status [label="status"];
+    s_id [label=<<U>salary_id</U>>]; s_basic [label="basic"]; s_hra [label="hra"];
+    s_spec [label="special_allowance"]; s_eff [label="effective_from"];
+    a_id [label=<<U>attendance_id</U>>]; a_date [label="att_date"]; a_in [label="check_in"];
+    a_out [label="check_out"]; a_worked [label="worked_minutes", style="filled,dashed"];
+    l_id [label=<<U>leave_id</U>>]; l_from [label="from_date"]; l_to [label="to_date"];
+    l_status [label="status"]; l_reason [label="reason"];
+    t_id [label=<<U>leave_type_id</U>>]; t_code [label="code"]; t_paid [label="is_paid"]; t_quota [label="annual_quota"];
+    p_id [label=<<U>payroll_id</U>>]; p_month [label="pay_month"]; p_ot [label="ot_hours"];
+    p_gross [label="gross_earnings", style="filled,dashed"]; p_ded [label="total_deductions", style="filled,dashed"];
+    p_net [label="net_salary", style="filled,dashed"]; p_status [label="status"];
+    u_id [label=<<U>user_id</U>>]; u_name [label="username"]; u_role [label="role"]; u_hash [label="password_hash"];
+
+    // ---------------- Entity - relationship (cardinality on edges) ----------------
+    EMPLOYEE -- works_in [label="N", fontsize=13, fontcolor="#b00020"];
+    works_in -- DEPARTMENT [label="1", fontsize=13, fontcolor="#b00020"];
+
+    EMPLOYEE -- manages [label="1  (manager)", fontsize=11, fontcolor="#b00020"];
+    manages -- EMPLOYEE [label="N  (reports)", fontsize=11, fontcolor="#b00020"];
+
+    EMPLOYEE -- has_salary [label="1", fontsize=13, fontcolor="#b00020"];
+    has_salary -- SALARY_STRUCTURE [label="N", fontsize=13, fontcolor="#b00020"];
+
+    EMPLOYEE -- records [label="1", fontsize=13, fontcolor="#b00020"];
+    records -- ATTENDANCE [label="N", fontsize=13, fontcolor="#b00020"];
+
+    EMPLOYEE -- applies [label="1", fontsize=13, fontcolor="#b00020"];
+    applies -- LEAVE_REQUEST [label="N", fontsize=13, fontcolor="#b00020"];
+
+    LEAVE_REQUEST -- of_type [label="N", fontsize=13, fontcolor="#b00020"];
+    of_type -- LEAVE_TYPE [label="1", fontsize=13, fontcolor="#b00020"];
+
+    EMPLOYEE -- reviews [label="1  (HR)", fontsize=11, fontcolor="#b00020"];
+    reviews -- LEAVE_REQUEST [label="N", fontsize=13, fontcolor="#b00020"];
+
+    EMPLOYEE -- paid [label="1", fontsize=13, fontcolor="#b00020"];
+    paid -- PAYROLL [label="N", fontsize=13, fontcolor="#b00020"];
+
+    EMPLOYEE -- logs_in [label="1", fontsize=13, fontcolor="#b00020"];
+    logs_in -- APP_USER [label="1", fontsize=13, fontcolor="#b00020"];
+
+    // ---------------- Entity - attribute ----------------
+    edge [color="#9aa5b1", len=1.1];
+    DEPARTMENT -- {d_id d_name d_loc};
+    EMPLOYEE -- {e_id e_name e_email e_hire e_desig e_status};
+    SALARY_STRUCTURE -- {s_id s_basic s_hra s_spec s_eff};
+    ATTENDANCE -- {a_id a_date a_in a_out a_worked};
+    LEAVE_REQUEST -- {l_id l_from l_to l_status l_reason};
+    LEAVE_TYPE -- {t_id t_code t_paid t_quota};
+    PAYROLL -- {p_id p_month p_ot p_gross p_ded p_net p_status};
+    APP_USER -- {u_id u_name u_role u_hash};
+}

@@ -1,0 +1,27 @@
++--------------------------------------------------------------------+
+|              TechSphere Solutions Pvt. Ltd., Gurugram              |
+|                     SALARY SLIP - OCTOBER 2026                     |
++--------------------------------------------------------------------+
+| Employee    : Rahul Verma          Emp ID     : 1004               |
+| Designation : Software Engineer    Department : Engineering        |
+| Joined      : 03-Jun-2024          Status     : PROCESSED          |
++--------------------------------------------------------------------+
+| ATTENDANCE                                                         |
+| Working days                  20  Present days                17.0 |
+| Paid leave                   1.0  Unpaid leave                 2.0 |
+| Absent days                  0.0  Loss-of-pay days             2.0 |
+| Late marks                     9  Regular hours             152.35 |
+| OT hrs weekday 1.5x         0.00  OT hrs holiday 2x           0.00 |
++--------------------------------------------------------------------+
+| EARNINGS                          DEDUCTIONS                       |
+| Basic                  48,000.00  Loss of pay             8,000.00 |
+| HRA                    19,200.00  Late marks              6,000.00 |
+| Special allowance      12,800.00  Provident fund          5,184.00 |
+| Overtime pay                0.00  Income tax (TDS)            0.00 |
++--------------------------------------------------------------------+
+| GROSS EARNINGS         80,000.00  TOTAL DEDUCTIONS       19,184.00 |
++--------------------------------------------------------------------+
+| NET SALARY (Rs.)                                         60,816.00 |
++--------------------------------------------------------------------+
+  Generated on 20-Nov-2026 21:38. This is a system-generated slip.
+

@@ -1,0 +1,27 @@
+======================================================================
+  Payroll & Attendance System - Login
+======================================================================
+  Username: neha
+  Password:
+
+  Welcome, Neha Kapoor (HR ADMIN)
+
+======================================================================
+  HR Admin - Neha Kapoor
+======================================================================
+   1. Employee directory
+   2. Add new employee
+   3. Revise salary
+   4. Today's attendance board
+   5. Correct an attendance record
+   6. Review pending leave requests
+   7. Monthly attendance report
+   8. Late marks report
+   9. Overtime summary
+  10. Generate monthly payroll
+  11. Mark payroll as PAID (lock)
+  12. Payroll expenditure statement
+  13. View any salary slip
+  14. Audit log
+  15. My own self-service
+   0. Back / Logout

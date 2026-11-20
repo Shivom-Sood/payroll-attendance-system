@@ -1,0 +1,20 @@
+Overtime summary 2026-10
+  +------+----------------+-------------------+-------------+-------------+----------------+-----------+------+
+  | rank | employee_name  | dept_name         | weekday_hrs | holiday_hrs | total_ot_hours | ot_pay    | pct  |
+  +------+----------------+-------------------+-------------+-------------+----------------+-----------+------+
+  |    1 | Vikram Singh   | DevOps            |       10.17 |       18.00 |          28.17 | 19,218.77 | 46.0 |
+  |    2 | Rohan Gupta    | DevOps            |        5.93 |        6.00 |          11.93 |  6,531.23 | 15.6 |
+  |    3 | Priya Sharma   | Engineering       |        2.38 |        4.50 |           6.88 |  5,108.57 | 12.2 |
+  |    4 | Karan Malhotra | Quality Assurance |        6.55 |        0.00 |           6.55 |  3,377.34 |  8.1 |
+  |    5 | Arjun Mehta    | Engineering       |        4.90 |        0.00 |           4.90 |  4,134.38 |  9.9 |
+  |    6 | Isha Bansal    | Engineering       |        3.30 |        0.00 |           3.30 |    990.00 |  2.4 |
+  |    7 | Neha Kapoor    | Human Resources   |        3.28 |        0.00 |           3.28 |  1,846.86 |  4.4 |
+  |    8 | Ananya Iyer    | Engineering       |        1.50 |        0.00 |           1.50 |    590.63 |  1.4 |
+  |    9 | Rahul Verma    | Engineering       |        0.00 |        0.00 |           0.00 |      0.00 |  0.0 |
+  |    9 | Sneha Reddy    | Quality Assurance |        0.00 |        0.00 |           0.00 |      0.00 |  0.0 |
+  |    9 | Kavya Nair     | Finance           |        0.00 |        0.00 |           0.00 |      0.00 |  0.0 |
+  |    9 | Aditya Joshi   | Human Resources   |        0.00 |        0.00 |           0.00 |      0.00 |  0.0 |
+  +------+----------------+-------------------+-------------+-------------+----------------+-----------+------+
+  12 row(s)
+
+

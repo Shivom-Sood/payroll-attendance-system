@@ -1,0 +1,33 @@
+Audit log (latest 25)
+  +--------+------------------+--------+--------------------------------------------------------------------------+----------------+--------------+
+  | log_id | table_name       | action | details                                                                  | changed_by     | changed_at   |
+  +--------+------------------+--------+--------------------------------------------------------------------------+----------------+--------------+
+  |     35 | payroll          | PAID   | emp 1011 month 2026-09 net 54321.31                                      | root@localhost | 20-Nov 21:38 |
+  |     34 | payroll          | PAID   | emp 1010 month 2026-09 net 60200.00                                      | root@localhost | 20-Nov 21:38 |
+  |     33 | payroll          | PAID   | emp 1009 month 2026-09 net 79386.36                                      | root@localhost | 20-Nov 21:38 |
+  |     32 | payroll          | PAID   | emp 1008 month 2026-09 net 102616.35                                     | root@localhost | 20-Nov 21:38 |
+  |     31 | payroll          | PAID   | emp 1007 month 2026-09 net 58617.79                                      | root@localhost | 20-Nov 21:38 |
+  |     30 | payroll          | PAID   | emp 1006 month 2026-09 net 84493.73                                      | root@localhost | 20-Nov 21:38 |
+  |     29 | payroll          | PAID   | emp 1005 month 2026-09 net 66081.58                                      | root@localhost | 20-Nov 21:38 |
+  |     28 | payroll          | PAID   | emp 1004 month 2026-09 net 67895.45                                      | root@localhost | 20-Nov 21:38 |
+  |     27 | payroll          | PAID   | emp 1003 month 2026-09 net 99259.01                                      | root@localhost | 20-Nov 21:38 |
+  |     26 | payroll          | PAID   | emp 1002 month 2026-09 net 134376.99                                     | root@localhost | 20-Nov 21:38 |
+  |     25 | payroll          | PAID   | emp 1001 month 2026-09 net 94453.39                                      | root@localhost | 20-Nov 21:38 |
+  |     24 | payroll          | PAID   | emp 1011 month 2026-08 net 52800.00                                      | root@localhost | 20-Nov 21:38 |
+  |     23 | payroll          | PAID   | emp 1010 month 2026-08 net 60557.14                                      | root@localhost | 20-Nov 21:38 |
+  |     22 | payroll          | PAID   | emp 1009 month 2026-08 net 77812.50                                      | root@localhost | 20-Nov 21:38 |
+  |     21 | payroll          | PAID   | emp 1008 month 2026-08 net 98817.55                                      | root@localhost | 20-Nov 21:38 |
+  |     20 | payroll          | PAID   | emp 1007 month 2026-08 net 56940.00                                      | root@localhost | 20-Nov 21:38 |
+  |     19 | payroll          | PAID   | emp 1006 month 2026-08 net 84202.07                                      | root@localhost | 20-Nov 21:38 |
+  |     18 | payroll          | PAID   | emp 1005 month 2026-08 net 63413.33                                      | root@localhost | 20-Nov 21:38 |
+  |     17 | payroll          | PAID   | emp 1004 month 2026-08 net 66020.08                                      | root@localhost | 20-Nov 21:38 |
+  |     16 | payroll          | PAID   | emp 1003 month 2026-08 net 98501.59                                      | root@localhost | 20-Nov 21:38 |
+  |     15 | payroll          | PAID   | emp 1002 month 2026-08 net 133753.56                                     | root@localhost | 20-Nov 21:38 |
+  |     14 | payroll          | PAID   | emp 1001 month 2026-08 net 91660.14                                      | root@localhost | 20-Nov 21:38 |
+  |     13 | salary_structure | INSERT | emp 1004: basic 48000.00, hra 19200.00, special 12800.00 from 2026-10-01 | root@localhost | 20-Nov 21:38 |
+  |     12 | salary_structure | INSERT | emp 1012: basic 32000.00, hra 12800.00, special 7200.00 from 2026-10-12  | root@localhost | 20-Nov 21:38 |
+  |     11 | salary_structure | INSERT | emp 1011: basic 35000.00, hra 14000.00, special 8000.00 from 2025-03-03  | root@localhost | 20-Nov 21:38 |
+  +--------+------------------+--------+--------------------------------------------------------------------------+----------------+--------------+
+  25 row(s)
+
+

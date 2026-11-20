@@ -1,0 +1,17 @@
+Choose: 1
+  +------------+--------------+
+  | message    | at_time      |
+  +------------+--------------+
+  | Checked in | 20-Nov 21:38 |
+  +------------+--------------+
+  1 row(s)
+
+
+...
+[!] Already checked in today
+
+
+...
+[!] Insufficient leave balance for this leave type
+
+

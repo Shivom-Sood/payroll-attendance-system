@@ -1,0 +1,14 @@
+$ mysql -u rahul -p'emp@1234' payroll_db -e "SELECT CURRENT_ROLE();"
+CURRENT_ROLE()
+`payroll_employee`@`%`
+$ mysql -u rahul -p'emp@1234' payroll_db -e "SELECT month_label, net_salary, status FROM v_my_payslips;"
+month_label	net_salary	status
+August 2026	66020.08	PAID
+September 2026	67895.45	PAID
+October 2026	60816.00	PROCESSED
+$ mysql -u rahul -p'emp@1234' payroll_db -e "SELECT * FROM payroll;"
+ERROR 1142 (42000) at line 1: SELECT command denied to user 'rahul'@'localhost' for table 'payroll'
+$ mysql -u rahul -p'emp@1234' payroll_db -e "CALL sp_generate_payroll(2026,10);"
+ERROR 1370 (42000) at line 1: execute command denied to user 'rahul'@'localhost' for routine 'payroll_db.sp_generate_payroll'
+$ mysql -u neha -p'hr@1234' payroll_db -e "DELETE FROM audit_log;"
+ERROR 1142 (42000) at line 1: DELETE command denied to user 'neha'@'localhost' for table 'audit_log'

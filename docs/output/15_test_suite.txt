@@ -1,0 +1,62 @@
+$ python3 tests/run_tests.py
+Rebuilding payroll_db (clean state)...
+  [PASS] V01  HR adds a new employee (employee + salary + login in one transaction)
+  [PASS] V02  Login with the correct password (salted SHA-256 matches)
+  [PASS] V03  Employee checks in today
+  [PASS] V04  Employee checks out after checking in
+  [PASS] V05  HR revises salary (new history row, audit row written)
+  [PASS] V06  Employee applies for 2 days of casual leave
+  [PASS] V07  HR approves the leave (audit row written)
+  [PASS] V08  Re-run October payroll (transaction replaces PROCESSED rows)
+  [PASS] V09  Mark October payroll as PAID (all rows in one transaction)
+  [PASS] V10  Reports return data: monthly attendance rows for Oct 2026
+  [PASS] I01  Negative basic salary via procedure
+  [PASS] I02  Negative salary inserted directly into the table (CHECK constraint)
+  [PASS] I03  Duplicate attendance entry (same employee, same date)
+  [PASS] I04  Checking in twice on the same day
+  [PASS] I05  Check-out time earlier than check-in
+  [PASS] I06  Attendance for a future date
+  [PASS] I07  Attendance before the joining date
+  [PASS] I08  Leave overlapping an approved leave (trigger)
+  [PASS] I09  Leave longer than the remaining balance
+  [PASS] I10  Leave on dates with no working days (weekend)
+  [PASS] I11  Non-HR employee tries to approve a leave
+  [PASS] I12  HR admin tries to approve their own leave
+  [PASS] I13  Add employee with a duplicate email
+  [PASS] I14  ...and the failed add leaves no partial rows (ROLLBACK)
+  [PASS] I15  Modify a PAID payroll record
+  [PASS] I16  Delete a PAID payroll month
+  [PASS] I17  Change attendance inside a PAID month
+  [PASS] I18  Generate payroll for a month that has not ended
+  [PASS] I19  Regenerate an already PAID month
+  [PASS] I20  Back-date a salary revision into a paid month
+  [PASS] I21  Unauthorized: employee 'rahul' reads the payroll table
+  [PASS] I22  Unauthorized: employee 'rahul' runs the payroll procedure
+  [PASS] I23  Unauthorized: app account edits a table directly (bypassing procedures)
+  [PASS] I24  Unauthorized: HR tries to erase the audit log
+  [PASS] I25  Employee self-service view shows only their own slips
+  [PASS] I26  Login with a wrong password is refused
+  [PASS] I27  SQL-injection username (' OR '1'='1) finds no user (parameterised query)
+  [PASS] B01  Worked exactly 8h00m (480 min) -> full day
+  [PASS] B02  Worked 7h59m (479 min) -> half day
+  [PASS] B03  Worked exactly 4h00m (240 min) -> half day
+  [PASS] B04  Worked 3h59m (239 min) -> counted absent
+  [PASS] B05  Check-in at exactly 09:45:00 (end of grace) -> not late
+  [PASS] B06  Check-in at 09:45:01 -> late mark
+  [PASS] B07  Weekday: 29 min beyond the 9h shift -> no overtime
+  [PASS] B08  Weekday: exactly 30 min beyond the shift -> 30 min OT
+  [PASS] B09  Weekday: 6h beyond the shift -> capped at 240 min
+  [PASS] B10  Weekend: 10h worked -> OT capped at one shift (540)
+  [PASS] B11  Holiday (Diwali 9 Nov): 5h worked -> all 300 min are OT
+  [PASS] B12  Taxable income exactly Rs 12,00,000 -> zero tax (rebate)
+  [PASS] B13  Taxable Rs 12,10,000 -> marginal relief caps tax at Rs 10,000 + cess
+  [PASS] B14  Taxable Rs 16,00,000 -> slab tax Rs 1,20,000 + 4% cess
+  [PASS] B15  Leave request using exactly the remaining EL balance (15 days)
+  [PASS] B16  One more EL day beyond the balance -> rejected
+  [PASS] B17  Late-mark rule: every payroll row deducts 0.5 day per 3 late marks
+  [PASS] B18  Mid-month joiner (Isha, joined 12 Oct): 6 days loss of pay
+  [PASS] B19  Every payroll row: net = gross - total deductions, and net >= 0
+  [PASS] B20  Leave from 31 Dec to 1 Jan (crosses a year end) -> must be split
+
+Restoring demo data...
+57/57 passed.

@@ -1,0 +1,17 @@
+Payroll & Attendance System - Login
+======================================================================
+  Username: rahul
+  Password:
+
+  Welcome, Rahul Verma (EMPLOYEE)
+
+======================================================================
+  Employee Self-Service - Rahul Verma
+======================================================================
+   1. Check in
+   2. Check out
+   3. My attendance for a month
+   4. Apply for leave
+   5. My leave balance and requests
+   6. My salary slip
+   0. Back / Logout
