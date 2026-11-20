@@ -1,6 +1,6 @@
 # Test Results: Overtime-Based Payroll and Attendance Management System
 
-Run on 20 Nov 2026 16:08 against a freshly rebuilt `payroll_db`. **57 of 57 test cases passed.**
+Run on 20 Nov 2026 22:16 against a freshly rebuilt `payroll_db`. **57 of 57 test cases passed.**
 
 Each case states the expected behaviour and the actual response from MySQL. Invalid cases pass when the database *rejects* the operation with the expected message.
 

@@ -59,7 +59,7 @@ BEGIN
         INSERT INTO salary_structure (emp_id, basic, hra, special_allowance, effective_from)
         VALUES (p_emp_id, p_basic, p_hra, p_special, p_hire_date);
 
-        SET v_salt = MD5(CONCAT(RAND(), NOW(6), p_username));
+        SET v_salt = HEX(RANDOM_BYTES(16));
         INSERT INTO app_users (emp_id, username, password_hash, salt, role)
         VALUES (p_emp_id, p_username, SHA2(CONCAT(v_salt, p_password), 256), v_salt, p_role);
     COMMIT;
