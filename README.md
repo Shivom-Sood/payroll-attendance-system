@@ -5,8 +5,9 @@ Topic #11 from the capstone list.
 
 A MySQL database for a mid-sized IT company (*TechSphere Solutions*, fictional). It records daily check-in and
 check-out, works out regular and overtime hours, handles leave and approvals, and generates monthly payroll
-with salary slips, overtime summaries, attendance reports and payroll expenditure statements. A Python
-command-line app gives **HR Admins** and **Employees** separate, role-based menus.
+with salary slips, overtime summaries, attendance reports and payroll expenditure statements. It has two
+role-based interfaces on the same backend: a **web app (Streamlit)** and a **command-line app**, each giving
+**HR Admins** and **Employees** different, restricted views.
 
 ## The five capstone phases → where each is delivered
 
@@ -16,7 +17,7 @@ command-line app gives **HR Admins** and **Employees** separate, role-based menu
 | 2. Procedural implementation | DDL, salary & tax procedures/functions, validation triggers, 10+ employees over 3 months | `sql/02_functions.sql`, `sql/04_procedures.sql`, `sql/05_triggers.sql`, `sql/06_seed_data.sql` (12 employees, Aug–Nov 2026) |
 | 3. Query & report development | monthly attendance, salary slip, late-marks reports; indexes with before/after plans | `sql/03_views.sql`, `sql/09_index_optimization.sql`, `docs/output/index_optimization_results.txt` |
 | 4. Security, access control & testing | RBAC (HR vs employee), COMMIT/ROLLBACK, valid/invalid/boundary tests documented | `sql/07_security.sql`, `tests/run_tests.py`, `tests/test_results.md` (57/57 pass) |
-| 5. Integration, UI & presentation | role-based CLI on the same backend, README, screenshots, report | `app/payroll_app.py`, `docs/screenshots/`, `docs/Capstone_Report_Shivom_Sood.pdf` |
+| 5. Integration, UI & presentation | role-based web/CLI interface on the same backend, README, screenshots, report | `web/app.py` (Streamlit), `app/payroll_app.py`, `docs/screenshots/`, `docs/Capstone_Report_Shivom_Sood.pdf` |
 
 Everything runs as **one connected application** on one database (`payroll_db`), built by one script.
 
@@ -35,7 +36,9 @@ payroll-attendance-system/
 │   ├── 07_security.sql          roles, users, row-level self-service views (DCL)
 │   ├── 08_demo_queries.sql      13 viva queries (joins, subqueries, CTEs, windows…)
 │   └── 09_index_optimization.sql  execution plan before/after experiment
+├── web/app.py                   Streamlit web app (HR + Employee pages)
 ├── app/payroll_app.py           Python CLI (HR + Employee menus)
+├── requirements.txt             Python packages (mysql-connector-python, streamlit, pandas)
 ├── tests/
 │   ├── run_tests.py             57 valid / invalid / boundary test cases
 │   └── test_results.md          documented results
@@ -43,7 +46,7 @@ payroll-attendance-system/
 └── docs/
     ├── Capstone_Report_Shivom_Sood.pdf
     ├── er_diagram_chen.png, architecture.png
-    ├── screenshots/             real output from the app and MySQL
+    ├── screenshots/             real output from the CLI and MySQL (web/ = web app)
     └── output/                  raw text traces
 ```
 
@@ -51,10 +54,12 @@ payroll-attendance-system/
 
 ```bash
 brew services start mysql                 # make sure MySQL is running
-pip3 install mysql-connector-python       # Python driver
 cd payroll-attendance-system
+pip3 install -r requirements.txt          # mysql-connector-python, streamlit, pandas
 ./setup.sh                                # asks for MySQL root password (Enter if none)
-python3 app/payroll_app.py
+
+streamlit run web/app.py                  # web app  -> opens http://localhost:8501
+python3 app/payroll_app.py                # or the command-line app
 ```
 
 Using MySQL Workbench instead? Open and run the files `01` to `07` in order, then `08` for the demo queries.
@@ -71,6 +76,25 @@ override the connection with `PAYROLL_DB_USER`, `PAYROLL_DB_PASSWORD`, `PAYROLL_
 
 > Sample attendance runs from **1 Aug to 19 Nov 2026**. Working days after that show as *ABSENT* until people
 > check in through the app. August and September payroll are **PAID** (locked), October is **PROCESSED**.
+
+## Web interface (Streamlit)
+
+`streamlit run web/app.py` opens the app in the browser. It calls exactly the same stored procedures and views as
+the command-line app, so every rule (overtime, leave balance, locked months, access control) behaves identically.
+
+| HR Admin (neha / hr@1234) | Employee (rahul / emp@1234) |
+|---|---|
+| Dashboard: headcount, check-ins, pending leave, payroll charts | Today: check-in / check-out buttons, month-to-date summary |
+| Employees: directory, add employee, revise salary | My attendance: day-by-day records |
+| Attendance: monthly summary, late marks, corrections | My leave: balances, apply for leave, request history |
+| Leave requests: approve / reject | My salary slips: view and download |
+| Payroll: generate, lock as PAID, register, overtime, expenditure | |
+| Salary slips for any employee, audit log | |
+
+| | |
+|---|---|
+| ![HR dashboard](docs/screenshots/web/02_hr_dashboard.png) | ![Salary slip](docs/screenshots/web/05_hr_salary_slip.png) |
+| ![Payroll](docs/screenshots/web/03_hr_payroll.png) | ![Employee leave](docs/screenshots/web/08_employee_leave.png) |
 
 ## Organisational policy (stored in `payroll_policy`, editable)
 
